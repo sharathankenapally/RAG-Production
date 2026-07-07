@@ -1,19 +1,19 @@
-# Production-Grade Document RAG Assistant
+# Production-Grade RAG Assistant
 
-A local, private, fast, and self-auditing Retrieval-Augmented Generation (RAG) assistant. It allows you to upload, index, filter, and query documents with absolute privacy.
+A local, private, fast, and self-auditing Retrieval-Augmented Generation (RAG) assistant. It allows you to upload, index, filter, and query files with absolute privacy.
 
 ---
 
 ## 🚀 Key Features
 
-1. **Dynamic PDF Ingestion:** Upload and index new PDF documents instantly through the sidebar. Chunks are embedded and added to Qdrant in memory without losing previously indexed documents.
+1. **Dynamic Ingestion:** Upload and index new PDF documents instantly through the sidebar. Chunks are embedded and added to Qdrant in memory without losing previously indexed files.
 2. **Conversational Memory:** Multi-turn chat interface. Message history is preserved in Redis, and follow-up questions are automatically rephrased into standalone database queries using your local LLM.
-3. **Metadata Filtering (Search Focus):** Restrict your search focus dynamically using the sidebar selector. Only documents you choose will be queried.
+3. **Metadata Filtering (Search Focus):** Restrict your search focus dynamically using the sidebar selector. Only files you choose will be queried.
 4. **Hybrid Search + Cross-Encoder Reranking:**
    * **Stage 1 (Retrieval):** Performs a hybrid search in Qdrant combining Dense Vectors and Sparse Vectors (BM25) fused using Reciprocal Rank Fusion (RRF).
    * **Stage 2 (Reranking):** Scores the top 20 candidate chunks with a local Cross-Encoder model (`Xenova/ms-marco-MiniLM-L-6-v2` via `fastembed`) to feed only the top 3 most relevant passages to the LLM.
-5. **Post-Retrieval Similarity Thresholding:** Instantly rejects off-topic queries (e.g. recipes, coding, general chitchat) in under **3ms** by checking vector distance scores, saving GPU/CPU cycles.
-6. **Local Self-Auditing Evaluation:** Evaluates every answer in the background using the LLM-as-a-Judge technique. Shows **Faithfulness** (hallucination detection) and **Relevance** scores directly inside the chat bubbles.
+5. **Guardrails (Post-Retrieval Similarity Thresholding):** Instantly rejects off-topic queries (e.g. recipes, coding, general chitchat) in under **3ms** by checking vector distance scores, saving GPU/CPU cycles.
+6. **Real-time Evaluation (LLM-as-a-Judge):** Evaluates every answer in the background using the LLM-as-a-Judge technique. Shows **Faithfulness** (hallucination detection) and **Relevance** scores directly inside the chat bubbles.
 
 ---
 
