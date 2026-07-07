@@ -1,0 +1,17 @@
+# Environments
+venv/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local storage and history
+query_history.txt
+raw/
+docs/
+
+# IDE files
+.DS_Store
+.idea/
+.vscode/
